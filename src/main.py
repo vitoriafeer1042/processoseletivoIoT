@@ -19,10 +19,10 @@ last_btn_state = 1
 last_btn_time = 0
 
 def get_lux(adc_val):
-    if adc_val == 0:
+    if adc_val <= 0:
+        return 0
+    if adc_val >= 4095:
         return 100000
-    if adc_val == 4095:
-        return 0.1
     try:
         r_ldr = 10000 * (4095 / adc_val - 1)
         if r_ldr <= 0:
