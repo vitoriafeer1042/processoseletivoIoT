@@ -53,11 +53,11 @@ while True:
             print("Alerta: Micro-parada detectada!")
             alerta_emitido = True
 
-    # Leitura do botao de reset com debounce
+    # Leitura do botao de reset com debounce (dispara na soltura)
     estado_botao = pino_botao.value()
     if estado_botao != estado_botao_ant:
         if time.ticks_diff(agora, tempo_botao_ant) > DEBOUNCE_MS:
-            if estado_botao == 0:
+            if estado_botao == 1 and estado_botao_ant == 0:
                 pecas_contadas = 0
                 obstruido = False
                 alerta_emitido = False
